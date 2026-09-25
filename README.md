@@ -8,7 +8,7 @@ A Valheim mod. Put your chests in groups, and items move to the right chest by t
 
 Open any chest. The controls are next to the chest window.
 
-- **Group**: pick a group for this chest (for example "Ore"), or make a new one. Click the same group again to take the chest out of it.
+- **Group**: hover to see the items in this chest's group; click to open the group settings. Pick a group for this chest (for example "Ore"), or make a new one. Click the same group again to take the chest out of it.
 - **Set From Contents**: this chest's contents become the group's items. An item can only be in one group, so if an item belonged to another group, it moves to this one and the game tells you.
 - **Routes (?)**: hover for a short list of nearby groups (closest first, marked if full or behind a ward edge) and which of them have Evict Mismatching on.
 - **Hold routing**: while ticked, nothing moves in or out of this chest. Handy when setting up a new group: fill the chest, then use Set From Contents without nearby chests pulling your items away. Turns off when you close the chest.
@@ -102,8 +102,6 @@ You need **BepInExPack for Valheim** installed first.
 - Renaming a group keeps every chest in it, for everyone.
 
 ## Wards
-
-**Work in progress: this may not work yet.**
 
 - Items never cross the edge of a ward. Chests inside a ward only send items to chests inside the same ward, and chests outside wards only to chests outside wards.
 - A chest standing where two wards overlap only routes with chests covered by the same wards.
