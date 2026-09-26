@@ -75,20 +75,22 @@ Everything is checked again when:
 
 You need **BepInExPack for Valheim** installed first.
 
-**Install with Gale from Hexium**, or manually copy every DLL in this package's `plugins` folder into `BepInEx/plugins`. BepInExPack for Valheim supplies Harmony and MonoMod; Storage Groups does not replace those loader libraries.
+**Install with a mod manager** such as Gale or r2modman. That's all.
+
+The mod is exactly two files: `StorageGroups.dll` and `StorageGroups.Core.dll`. Everything else it uses already comes with Valheim or BepInExPack.
 
 **With Gale (manual profile install):**
 
 1. Open your profile folder. In Gale: the profile menu, then "Open profile folder".
 2. Go to `BepInEx/plugins`.
-3. Make a folder called `StorageGroups` and put all the DLLs in it.
+3. Make a folder called `StorageGroups` and put both DLLs in it.
 4. Start the game through the mod manager.
 
 **Manual install:**
 
 1. Go to your Valheim folder (Steam: right-click Valheim, Manage, Browse local files).
 2. Go to `BepInEx/plugins`.
-3. Make a folder called `StorageGroups` and put all the DLLs in it.
+3. Make a folder called `StorageGroups` and put both DLLs in it.
 
 **Uninstall:** delete the `StorageGroups` folder. Your chests keep their items.
 
