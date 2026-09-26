@@ -65,11 +65,9 @@ An item moves at most twice, and never back and forth. A group chest works like 
 
 Everything is checked again when:
 
-- an item lands in a chest,
-- a chest frees up space (you take something out),
+- an inventory changes (this chest and nearby chests are rechecked),
 - a chest's group is set, changed or cleared,
-- a group's Evict Mismatching is turned on,
-- a group's item list changes (Set From Contents),
+- any group setting or item list changes, including Evict Mismatching turning off,
 - Hold routing is turned off,
 - a group is deleted.
 
