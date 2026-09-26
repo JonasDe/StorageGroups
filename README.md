@@ -77,9 +77,9 @@ Everything is checked again when:
 
 You need **BepInExPack for Valheim** installed first.
 
-**Download** `StorageGroups-0.1.0.zip` from the [Releases](../../releases) page, or all the files in the `plugins` folder of this repo. Besides `StorageGroups.dll` and `StorageGroups.Core.dll` there are a few `System.*` and `Microsoft.*` library files the mod needs. All of them are needed.
+**Install with Gale from Hexium**, or manually copy every DLL in this package's `plugins` folder into `BepInEx/plugins`. BepInExPack for Valheim supplies Harmony and MonoMod; Storage Groups does not replace those loader libraries.
 
-**With a mod manager (Gale, r2modman, Thunderstore Mod Manager):**
+**With Gale (manual profile install):**
 
 1. Open your profile folder. In Gale: the profile menu, then "Open profile folder".
 2. Go to `BepInEx/plugins`.
