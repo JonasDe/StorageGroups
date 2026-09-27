@@ -4,6 +4,8 @@
 
 A Valheim mod. Put your chests in groups, and items move to the right chest by themselves.
 
+Licensed under Apache 2.0. See `LICENSE` and `NOTICE` for terms and project credit.
+
 ## How it works
 
 Open any chest. The controls are next to the chest window.
