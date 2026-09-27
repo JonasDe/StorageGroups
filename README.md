@@ -8,11 +8,15 @@ A Valheim mod. Put your chests in groups, and items move to the right chest by t
 
 Open any chest. The controls are next to the chest window.
 
+![The Storage Groups controls next to a chest window](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-panel.png)
+
 - **Group**: hover to see the items in this chest's group; click to open the group settings. Pick a group for this chest (for example "Ore"), or make a new one. Click the same group again to take the chest out of it.
 - **Set From Contents**: this chest's contents become the group's items. An item can only be in one group, so if an item belonged to another group, it moves to this one and the game tells you.
 - **Routes (?)**: hover for a short list of nearby groups (closest first, marked if full or behind a ward edge) and which of them have Evict Mismatching on.
 - **Hold routing**: while ticked, nothing moves in or out of this chest. Handy when setting up a new group: fill the chest, then use Set From Contents without nearby chests pulling your items away. Turns off when you close the chest.
 - **Evict Mismatching** (per group, optional): what happens to items that don't belong in this group's chests when their own group has no room nearby. With it on, they go to a nearby chest that doesn't evict. With it off, they stay.
+
+![The group settings: each group with its item count, Evict Mismatching, Edit and delete](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/group-menu.png)
 
 When an item lands in any chest, and a chest of that item's group is within 10 meters with room, the item moves there. Closest chest first.
 
@@ -20,7 +24,12 @@ When an item lands in any chest, and a chest of that item's group is within 10 m
 - Items with no group stay where you put them, unless the chest evicts.
 - Changing a chest's group re-checks everything in it.
 - Hover over a chest to see its group, and whether it is inside a ward.
+
+  ![Hovering a chest shows its group, eviction and ward](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-hover.png)
+
 - **Show routing messages** (checkbox at the top of the group menu, just for you): shows a short message every time an item is routed near you, like "Evicted 3 Stone to an ungrouped chest (7 m)". Handy to see what the mod is doing. Off by default.
+
+  ![A routing message](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/routing-message.png)
 
 ## Where does an item go?
 
