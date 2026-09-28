@@ -8,31 +8,46 @@ Licensed under Apache 2.0. See `LICENSE` and `NOTICE` for terms and project cred
 
 ## How it works
 
-Open any chest. The controls are next to the chest window.
+Open any chest. The Storage Groups controls sit next to the chest window, and they change with the chest.
 
-![The Storage Groups controls next to a chest window](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-panel.png)
+### A chest without a group
 
-- **Group**: hover to see the items in this chest's group; click to open the group settings. Pick a group for this chest (for example "Ore"), or make a new one. Click the same group again to take the chest out of it.
-- **Set From Contents**: this chest's contents become the group's items. An item can only be in one group, so if an item belonged to another group, it moves to this one and the game tells you.
-- **Extend From Contents**: like Set From Contents, but only adds. This chest's items join the group, and the group keeps the items it already had. Items from another group move to this one, and the game tells you.
-- **Routes (?)**: hover for a short list of nearby groups (closest first, marked if full or behind a ward edge) and which of them have Evict Mismatching on.
-- **Hold routing**: while ticked, nothing moves in or out of this chest. Handy when setting up a new group: fill the chest, then use Set From Contents without nearby chests pulling your items away. Turns off when you close the chest.
-- **Evict Mismatching** (per group, optional): what happens to items that don't belong in this group's chests when their own group has no room nearby. With it on, they go to a nearby chest that doesn't evict. With it off, they stay.
+![A chest without a group: Group (none), New Group From Contents, Pause sorting](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-ungrouped.png)
 
-![The group settings: each group with its item count, Evict Mismatching, Edit and delete](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/group-menu.png)
+- **Group: (none)**: click to open the group menu and pick a group for this chest. Hover to see the group chests nearby (closest first, marked if full or behind a ward edge) and which groups are Strict.
+- **New Group From Contents**: makes a group from what's in the chest. The name is filled in for you from the item there is most of (for example "Wood"); press Enter, or type your own. The chest joins the new group and all its item types are added. If an item belonged to another group, it moves to this one and the game tells you.
+- **Pause sorting**: while ticked, nothing moves in or out of this chest. Handy when you want to collect items first, for example ones that already belong to another group, before making a group from them. Turns off when you close the chest.
+
+### A chest with a group
+
+![A chest in the Meat group: Add Contents, Edit Items, Pause sorting](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-grouped.png)
+
+- **Group: Meat**: hover to see the group's items and the group chests nearby; click to open the group menu.
+- **Add Contents**: adds this chest's item types to its group. The group keeps the items it already had. If an item belonged to another group, it moves to this one and the game tells you.
+- **Edit Items...**: the group's item list. Remove single items, or use Clear all (click it twice) to start over.
+- **Pause sorting**: same as above.
+
+![Edit Items: the group's items, each with a Remove button, and Clear all](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/edit-items.png)
+
+### The group menu
+
+![The group menu: every group with its item count, Strict, Rename and delete](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/groups-menu.png)
+
+- Every group, with how many item types it has. The one with the border is this chest's group; click it again to take the chest out of the group. **+** at the bottom of the list makes a new, empty group.
+- **Strict** (per group, optional): a strict group's chests only keep the group's own items. Anything else goes to a chest of its own group nearby, or, if none has room, to a nearby chest that isn't strict. Without Strict, other items stay where they are.
+- **Rename**, and **X** to delete a group. Deleting a group never deletes items; its chests just become ungrouped.
+- **Show routing messages** (just for you): shows a short message every time an item is routed near you, like "Evicted 3 Stone to an ungrouped chest (7 m)". Handy to see what the mod is doing. Off by default.
+
+  ![A routing message](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/routing-message.png)
+
+### Where items go
 
 When an item lands in any chest, and a chest of that item's group is within 10 meters with room, the item moves there. Closest chest first.
 
-- If its group's chests are all full or too far away, the item stays put, unless the chest it landed in evicts (see above). Nothing is lost.
-- Items with no group stay where you put them, unless the chest evicts.
+- If its group's chests are all full or too far away, the item stays put, unless the chest it landed in is Strict (see above). Nothing is lost.
+- Items with no group stay where you put them, unless the chest is Strict.
 - Changing a chest's group re-checks everything in it.
-- Hover over a chest to see its group, and whether it is inside a ward.
-
-  ![Hovering a chest shows its group, eviction and ward](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-hover.png)
-
-- **Show routing messages** (checkbox at the top of the group menu, just for you): shows a short message every time an item is routed near you, like "Evicted 3 Stone to an ungrouped chest (7 m)". Handy to see what the mod is doing. Off by default.
-
-  ![A routing message](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/routing-message.png)
+- Hover over a chest to see its group, whether it's Strict, and whether it is inside a ward.
 
 ## Where does an item go?
 
@@ -53,8 +68,8 @@ When an item lands in any chest, and a chest of that item's group is within 10 m
                             | no
                             v
         +-------------------------------------+
-        | Does this chest's group have        |--- no ----> STAYS
-        | Evict Mismatching turned on?        |             (waits for room)
+        | Is this chest's group Strict?       |--- no ----> STAYS
+        |                                     |             (waits for room)
         +-------------------------------------+
                             | yes
                             v
@@ -65,8 +80,8 @@ When an item lands in any chest, and a chest of that item's group is within 10 m
                             | no
                             v
         +-------------------------------------+
-        | Is a grouped chest WITHOUT Evict    |--- yes ---> MOVES there
-        | Mismatching nearby with room?       |
+        | Is a grouped chest that is NOT      |--- yes ---> MOVES there
+        | Strict nearby with room?            |
         +-------------------------------------+
                             | no
                             v
@@ -79,8 +94,8 @@ Everything is checked again when:
 
 - an inventory changes (this chest and nearby chests are rechecked),
 - a chest's group is set, changed or cleared,
-- any group setting or item list changes, including Evict Mismatching turning off,
-- Hold routing is turned off,
+- any group setting or item list changes, including Strict turning off,
+- Pause sorting is turned off,
 - a group is deleted.
 
 ## Install
@@ -121,7 +136,7 @@ The mod is exactly two files: `StorageGroups.dll` and `StorageGroups.Core.dll`. 
 
 ## Works with
 
-- **AzuAutoStore**: AzuAutoStore puts the item in a chest first, then this mod moves it to the right group chest. Tip: turn on Evict Mismatching for your groups, because AzuAutoStore stores into any chest that already has that item.
+- **AzuAutoStore**: AzuAutoStore puts the item in a chest first, then this mod moves it to the right group chest. Tip: turn on Strict for your groups, because AzuAutoStore stores into any chest that already has that item.
 
 ## Does NOT work with
 

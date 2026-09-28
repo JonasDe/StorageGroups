@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.7: UI/UX overhaul
+
+- The chest sidebar now changes with the chest. A chest without a group shows **New Group From Contents**; a chest with a group shows **Add Contents** and **Edit Items...**. Both have **Pause sorting**.
+- **New Group From Contents**: one click (plus Enter) makes a group from the chest's items, named after the item there is most of, and puts the chest in it.
+- **Edit Items...**: a list of the group's items with icons, a Remove button for each, and Clear all.
+- The Group button's hover now also shows the group chests nearby, so the separate Routes (?) button is gone.
+- Clearer names: **Evict Mismatching** is now **Strict**, **Hold routing** is now **Pause sorting**, **Extend From Contents** is now **Add Contents**, and **Edit** in the group menu is now **Rename**. **Set From Contents** is gone: use Clear all, then Add Contents.
+- Popups have a solid dark background, so nothing shows through them.
+- Hover boxes update while you hover, for example right after Add Contents.
+- No gameplay or save changes. Groups, settings and multiplayer messages are the same as before, so older players and servers still work together with 0.1.7.
+
 ## 0.1.6
 
 - New **Extend From Contents** button in the chest sidebar: adds this chest's items to its group without removing the group's other items. An item still belongs to one group only; if it was in another group, it moves over and the game tells you.
