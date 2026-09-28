@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+- New **Extend From Contents** button in the chest sidebar: adds this chest's items to its group without removing the group's other items. An item still belongs to one group only; if it was in another group, it moves over and the game tells you.
+- New icon: three chests, each with its own group.
+- The mod page now has screenshots.
+
 ## 0.1.5
 
 - Group changes on a server now show up almost immediately (they could take up to about 5 seconds). This covers creating, renaming and deleting groups, Evict Mismatching, and Set From Contents.

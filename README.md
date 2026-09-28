@@ -14,6 +14,7 @@ Open any chest. The controls are next to the chest window.
 
 - **Group**: hover to see the items in this chest's group; click to open the group settings. Pick a group for this chest (for example "Ore"), or make a new one. Click the same group again to take the chest out of it.
 - **Set From Contents**: this chest's contents become the group's items. An item can only be in one group, so if an item belonged to another group, it moves to this one and the game tells you.
+- **Extend From Contents**: like Set From Contents, but only adds. This chest's items join the group, and the group keeps the items it already had. Items from another group move to this one, and the game tells you.
 - **Routes (?)**: hover for a short list of nearby groups (closest first, marked if full or behind a ward edge) and which of them have Evict Mismatching on.
 - **Hold routing**: while ticked, nothing moves in or out of this chest. Handy when setting up a new group: fill the chest, then use Set From Contents without nearby chests pulling your items away. Turns off when you close the chest.
 - **Evict Mismatching** (per group, optional): what happens to items that don't belong in this group's chests when their own group has no room nearby. With it on, they go to a nearby chest that doesn't evict. With it off, they stay.
