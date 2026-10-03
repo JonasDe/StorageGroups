@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1: No more false "please update" message
+
+### Fixes
+
+- Players already on 0.2 could get "This server uses Storage Groups 0.2 ... please update" when they joined. The server gave each player 20 seconds to report their version, but a game only reported once the player had spawned, and loading the world can take longer than that. Now your game reports its version as soon as it connects.
+- Version warnings now only appear when a different version is certain: a player's game reported another version, or it edited a group the way only 0.1.x does. Being slow to load never counts.
+- The "server runs an older Storage Groups" warning is gone, because an older server can't be recognised for certain.
+
+Works together with 0.2.0 players and servers. Update the server too, so it uses the stricter rule.
+
 ## 0.2.0: Locked chests, Priority and a new look
 
 **Update the server and every player to 0.2.** Mixed versions still work, but Locked chests are only fully protected when everyone is on 0.2 (see Multiplayer below).

@@ -141,7 +141,7 @@ The mod is exactly two files: `StorageGroups.dll` and `StorageGroups.Core.dll`. 
 ## Multiplayer
 
 - Install on the server and on every player, and keep everyone on the same version (0.2.x).
-- Mixed versions still work, with warnings: players on an older version get a message asking them to update, and everyone else is told who's outdated. Older versions don't know Locked, so while such a player is around, Locked chests they handle aren't fully protected.
+- Mixed versions still work, with warnings that only appear when an older version is certain: such a player gets a message asking them to update, and everyone else is told who's outdated. Older versions don't know Locked, so while such a player is around, Locked chests they handle aren't fully protected.
 - Groups are shared by everyone on the server. Anyone can create, rename or delete a group, and change its settings, except the built-in Locked group, which nobody can change.
 - All chests work together, no matter who built them or who has them open.
 - Renaming a group keeps every chest in it, for everyone.

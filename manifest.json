@@ -1,6 +1,6 @@
 {
   "name": "StorageGroups",
-  "version_number": "0.2.0",
+  "version_number": "0.2.1",
   "website_url": "https://github.com/JonasDe/StorageGroups",
   "description": "Put chests in groups and items move to the right chest by themselves. Works in multiplayer, respects wards, works with AzuAutoStore. Not compatible with other chest sorting mods like Smart Containers.",
   "dependencies": ["denikson-BepInExPack_Valheim-5.4.2351"]
