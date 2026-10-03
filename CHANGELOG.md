@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.2: New characters can join again
+
+**Update the server and every player.** The server part fixes joining for everyone, even players who haven't updated yet.
+
+### Fixes
+
+- A brand-new character (or anyone without a bed) could get stuck on the loading screen forever when joining a world with Storage Groups. The mod keeps its group data on a hidden object at the centre of the world, right next to the start temple, and the game waited for that object to appear before letting the player spawn. The server now moves the group data far outside the world, and the game no longer waits for it. Your groups and chests are not affected.
+- "*Name* isn't on Storage Groups 0.2" no longer appears when that player is on 0.2: your game only believes a list of outdated players from a server that counts proof alone (0.2.2 or newer). A 0.2.0 server could flag a player who was just slow to load.
+
 ## 0.2.1: No more false "please update" message
 
 ### Fixes
