@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.2.0: Locked chests, Priority and a new look
+
+**Update the server and every player to 0.2.** Mixed versions still work, but Locked chests are only fully protected when everyone is on 0.2 (see Multiplayer below).
+
+Thanks to **@datacain** for reporting the issues and ideas behind this release: Locked chests (#1), the popup size on large screens (#2) and Priority (#3).
+
+### New
+
+- **Locked** group, built in and always at the top of the group menu. Nothing moves into or out of a Locked chest automatically; you can still put items in and take them out by hand. Good for personal gear, boss loadouts, or materials saved for a build. It can't be renamed, deleted or given items.
+- **Priority** toggle on grouped chests. Priority chests fill first, and the group's other chests nearby move their items into a Priority chest whenever it has room, so your stock gathers in one place.
+
+### Look and feel
+
+- The Storage Groups and Edit Items popups now use the chest window's own wood background, and its colour changes with the time of day just like the chest window's. They used to be solid dark panels.
+- The popups now scale with the rest of the game's UI. They were about half size on large screens, such as 2160p.
+- Locked shows a padlock and a blue tint, in the group menu and on a Locked chest's Group button. A Locked chest's sidebar shows only the Group button; its hover explains that nothing moves.
+- Priority is a new row below Pause sorting, shown on grouped chests.
+- The chest sidebar always stays on screen, even when it has to move aside for the weight badge on a narrow screen.
+
+### Fixes
+
+- Placing a new chest didn't make nearby chests send it anything until something else changed. Now, for example, a Strict chest's leftover items move into a new ungrouped chest right away.
+
+### Multiplayer and updating
+
+- Version check, warnings only (nobody is kicked): players on an older version get an on-screen message asking them to update, and 0.2 players are told when someone outdated is online.
+- Players on 0.1.x don't know Locked: while their game is handling a Locked chest, it can still move items out of it, or (rarely) drop overflow into it. Their edits to the Locked group are refused, with a message telling them why.
+- If your world already has a group called "Locked", it's renamed to "Locked (old)". Its chests and items stay as they were.
+- Saved groups use the same format as before, so 0.1.x players and servers can still read them. Priority is saved separately, and 0.1.x ignores and keeps it.
+- If you ever installed the mod by hand, delete any loose `StorageGroups.dll` / `StorageGroups.Core.dll` directly in `BepInEx/plugins` and keep only the mod's own folder. 0.2 now detects an old leftover copy, turns itself off and names the file to delete in the log, instead of filling the log with errors.
+
 ## 0.1.7: UI/UX overhaul
 
 - The chest sidebar now changes with the chest. A chest without a group shows **New Group From Contents**; a chest with a group shows **Add Contents** and **Edit Items...**. Both have **Pause sorting**.

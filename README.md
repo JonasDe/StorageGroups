@@ -20,21 +20,29 @@ Open any chest. The Storage Groups controls sit next to the chest window, and th
 
 ### A chest with a group
 
-![A chest in the Meat group: Add Contents, Edit Items, Pause sorting](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-grouped.png)
+![A chest in the Stone group: Add Contents, Edit Items, Pause sorting, Priority](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-grouped-priority.png)
 
-- **Group: Meat**: hover to see the group's items and the group chests nearby; click to open the group menu.
+- **Group: Stone**: hover to see the group's items and the group chests nearby; click to open the group menu.
 - **Add Contents**: adds this chest's item types to its group. The group keeps the items it already had. If an item belonged to another group, it moves to this one and the game tells you.
 - **Edit Items...**: the group's item list. Remove single items, or use Clear all (click it twice) to start over.
 - **Pause sorting**: same as above.
+- **Priority**: this chest fills first. The group's other chests nearby also move their items into it whenever it has room (for example right after you take something out), so your stock gathers in one place. Tick it on the chest you use most. With several Priority chests in a group, items already in one of them stay there.
 
-![Edit Items: the group's items, each with a Remove button, and Clear all](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/edit-items.png)
+![Edit Items: the group's items, each with a Remove button, and Clear all](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/edit-items-020.png)
+
+### A Locked chest
+
+![A Locked chest: only the Group button, blue with a padlock](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/chest-locked.png)
+
+Put a chest in the built-in **Locked** group to keep it to yourself: nothing moves into or out of it automatically. You can still put items in and take them out by hand. Good for personal gear, boss loadouts, or materials saved for a build. A Locked chest only shows the Group button (blue, with a padlock); pick another group to unlock it.
 
 ### The group menu
 
-![The group menu: every group with its item count, Strict, Rename and delete](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/groups-menu.png)
+![The group menu: Locked at the top, then every group with its item count, Strict, Rename and delete](https://raw.githubusercontent.com/JonasDe/StorageGroups/main/images/groups-menu-locked.png)
 
+- **Locked** is always at the top. It's built in: it can't be renamed, deleted or given items. If your world already had a group called "Locked", it's now called "Locked (old)", with its chests and items unchanged.
 - Every group, with how many item types it has. The one with the border is this chest's group; click it again to take the chest out of the group. **+** at the bottom of the list makes a new, empty group.
-- **Strict** (per group, optional): a strict group's chests only keep the group's own items. Anything else goes to a chest of its own group nearby, or, if none has room, to a nearby chest that isn't strict. Without Strict, other items stay where they are.
+- **Strict** (per group, optional): a strict group's chests only keep the group's own items. Anything else goes to a chest of its own group nearby. If none has room, it goes to a nearby ungrouped chest, or failing that to a chest of a group that isn't Strict (never to a Locked chest). Without Strict, other items stay where they are.
 - **Rename**, and **X** to delete a group. Deleting a group never deletes items; its chests just become ungrouped.
 - **Show routing messages** (just for you): shows a short message every time an item is routed near you, like "Evicted 3 Stone to an ungrouped chest (7 m)". Handy to see what the mod is doing. Off by default.
 
@@ -42,10 +50,11 @@ Open any chest. The Storage Groups controls sit next to the chest window, and th
 
 ### Where items go
 
-When an item lands in any chest, and a chest of that item's group is within 10 meters with room, the item moves there. Closest chest first.
+When an item lands in any chest, and a chest of that item's group is within 10 meters with room, the item moves there. Priority chests first, then the closest chest.
 
 - If its group's chests are all full or too far away, the item stays put, unless the chest it landed in is Strict (see above). Nothing is lost.
 - Items with no group stay where you put them, unless the chest is Strict.
+- Locked chests are skipped completely: nothing leaves them, nothing is sent to them.
 - Changing a chest's group re-checks everything in it.
 - Hover over a chest to see its group, whether it's Strict, and whether it is inside a ward.
 
@@ -56,14 +65,19 @@ When an item lands in any chest, and a chest of that item's group is within 10 m
                             |
                             v
         +-------------------------------------+
-        | Is this chest in the item's group?  |--- yes ---> STAYS (it is home)
+        | Is this chest Locked?               |--- yes ---> STAYS
         +-------------------------------------+
                             | no
                             v
         +-------------------------------------+
+        | Is this chest in the item's group?  |--- yes ---> STAYS (it is home),
+        +-------------------------------------+             unless a Priority chest
+                            | no                            of the group nearby has
+                            v                               room: then it MOVES there
+        +-------------------------------------+
         | Is a chest of the item's group      |--- yes ---> MOVES there
-        | within 10 m, with room, and in the  |             (closest first)
-        | same ward (or both outside wards)?  |
+        | within 10 m, with room, and in the  |             (Priority chests first,
+        | same ward (or both outside wards)?  |              then closest)
         +-------------------------------------+
                             | no
                             v
@@ -81,22 +95,23 @@ When an item lands in any chest, and a chest of that item's group is within 10 m
                             v
         +-------------------------------------+
         | Is a grouped chest that is NOT      |--- yes ---> MOVES there
-        | Strict nearby with room?            |
+        | Strict (or Locked) nearby with room?|
         +-------------------------------------+
                             | no
                             v
                   STAYS (nowhere to send it)
 ```
 
-An item moves at most twice, and never back and forth. A group chest works like a sink: it keeps pulling in its group's items from nearby chests until it is full.
+Locked chests never take part. An item moves at most three times, and never back and forth. A group chest works like a sink: it keeps pulling in its group's items from nearby chests until it is full.
 
 Everything is checked again when:
 
 - an inventory changes (this chest and nearby chests are rechecked),
-- a chest's group is set, changed or cleared,
+- a chest's group is set, changed or cleared, or its Priority is turned on or off,
 - any group setting or item list changes, including Strict turning off,
 - Pause sorting is turned off,
-- a group is deleted.
+- a group is deleted,
+- a chest is built nearby, or loads in as you come near (a new place for items with nowhere to go).
 
 ## Install
 
@@ -119,12 +134,15 @@ The mod is exactly two files: `StorageGroups.dll` and `StorageGroups.Core.dll`. 
 2. Go to `BepInEx/plugins`.
 3. Make a folder called `StorageGroups` and put both DLLs in it.
 
+**Updating:** a mod manager replaces the files for you. If you ever installed by hand, make sure no loose `StorageGroups.dll` or `StorageGroups.Core.dll` sits directly in `BepInEx/plugins`: an old leftover copy can be loaded instead of the new one. If that happens, the mod turns itself off and the log (`BepInEx/LogOutput.log`) names the file to delete.
+
 **Uninstall:** delete the `StorageGroups` folder. Your chests keep their items.
 
 ## Multiplayer
 
-- Install on the server and on every player.
-- Groups are shared by everyone on the server. Anyone can create, rename or delete a group, and change its settings.
+- Install on the server and on every player, and keep everyone on the same version (0.2.x).
+- Mixed versions still work, with warnings: players on an older version get a message asking them to update, and everyone else is told who's outdated. Older versions don't know Locked, so while such a player is around, Locked chests they handle aren't fully protected.
+- Groups are shared by everyone on the server. Anyone can create, rename or delete a group, and change its settings, except the built-in Locked group, which nobody can change.
 - All chests work together, no matter who built them or who has them open.
 - Renaming a group keeps every chest in it, for everyone.
 
@@ -137,6 +155,7 @@ The mod is exactly two files: `StorageGroups.dll` and `StorageGroups.Core.dll`. 
 ## Works with
 
 - **AzuAutoStore**: AzuAutoStore puts the item in a chest first, then this mod moves it to the right group chest. Tip: turn on Strict for your groups, because AzuAutoStore stores into any chest that already has that item.
+- Other mods don't know about Locked. AzuAutoStore can still put items into a Locked chest (this mod then leaves them there), and mods that craft from nearby chests, such as AzuCraftyBoxes, can still take from one.
 
 ## Does NOT work with
 
